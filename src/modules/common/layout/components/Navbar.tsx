@@ -7,11 +7,21 @@ import { LINKS } from "@/utils/links";
 import FlameIcon from "@/modules/common/icons/FlameIcon";
 import AlertCircleIcon from "@/modules/common/icons/AlertCircleIcon";
 import ChevronDownIcon from "@/modules/common/icons/ChevronDownIcon";
+import { useCallback } from "react";
 
 interface NavbarProps {}
 const Navbar: FC<NavbarProps> = (props) => {
   const {} = props;
   const { config } = useApp();
+
+  const scrollToSection = useCallback((id: string) => {
+    if (typeof window !== 'undefined') {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   return (
     <Box py="2" px="8" position="sticky" top={0} zIndex={100} bg="#000" borderBottom="1px solid #181818">
@@ -31,7 +41,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         <Flex direction="row" alignItems="center" gap="2" ml={8}>
           {/* Explore Dropdown */}
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon boxSize={4} />} variant="ghost" color="white" fontWeight={200} px={3} py={2} minW="auto" borderRadius="lg" _hover={{ bg: "#181818" }}>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon boxSize={4} />} variant="ghost" color="white" fontWeight={200} px={3} py={2} minW="auto" borderRadius="lg" _hover={{ bg: "#181818" }} onClick={() => scrollToSection('explore')}>
               Explore
             </MenuButton>
             <MenuList bg="#111" borderColor="#222" color="white" fontWeight={200}>
@@ -62,15 +72,47 @@ const Navbar: FC<NavbarProps> = (props) => {
             </MenuList>
           </Menu>
           {/* Featured Button */}
-          <Button variant="ghost" color="white" fontWeight={200} px={3} py={2} minW="auto" borderRadius="lg" _hover={{ bg: "#181818" }}>
+          <Button
+            variant="ghost"
+            color="white"
+            fontWeight={200}
+            px={3}
+            py={2}
+            minW="auto"
+            borderRadius="lg"
+            _hover={{ bg: "#181818" }}
+            onClick={() => scrollToSection('featured')}
+          >
             Featured
           </Button>
           {/* Hot Deals Button */}
-          <Button variant="ghost" color="white" fontWeight={200} px={3} py={2} minW="auto" borderRadius="lg" leftIcon={<FlameIcon boxSize={5} />} _hover={{ bg: "#181818" }}>
+          <Button
+            variant="ghost"
+            color="white"
+            fontWeight={200}
+            px={3}
+            py={2}
+            minW="auto"
+            borderRadius="lg"
+            leftIcon={<FlameIcon boxSize={5} />}
+            _hover={{ bg: "#181818" }}
+            onClick={() => scrollToSection('hot-deals')}
+          >
             Hot Deals
           </Button>
           {/* Help Button */}
-          <Button variant="ghost" color="white" fontWeight={200} px={3} py={2} minW="auto" borderRadius="lg" leftIcon={<AlertCircleIcon boxSize={5} />} _hover={{ bg: "#181818" }}>
+          <Button
+            variant="ghost"
+            color="white"
+            fontWeight={200}
+            px={3}
+            py={2}
+            minW="auto"
+            borderRadius="lg"
+            leftIcon={<AlertCircleIcon boxSize={5} />}
+            _hover={{ bg: "#181818" }}
+            onClick={() => scrollToSection('help')}
+          >
             Help
           </Button>
         </Flex>

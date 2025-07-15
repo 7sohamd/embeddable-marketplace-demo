@@ -2,7 +2,7 @@ import { Flex, Text, Link } from "@chakra-ui/react";
 import React, { FC } from "react";
 import useApp from "@/lib/app/hooks/useApp";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
 
 interface FooterProps { }
 
@@ -36,17 +36,17 @@ const Footer: FC<FooterProps> = (props) => {
       </Flex>
       <Flex direction="column" align="center" mt={6} gap={1}>
         <Flex gap={4} mt={2}>
-          <Link href="mailto:soham4707@gmail.com" color="#bbb" _hover={{ color: '#fff' }} fontSize="xl" aria-label="Email">
-            <MdEmail />
+          <Link href="mailto:soham4707@gmail.com" color="#bbb" _hover={{ color: '#fff' }} aria-label="Email">
+            <EmailIcon boxSize={6} />
           </Link>
-          <Link href="tel:+917363977016" color="#bbb" _hover={{ color: '#fff' }} fontSize="xl" aria-label="Phone">
-            <MdPhone />
+          <Link href="tel:+917363977016" color="#bbb" _hover={{ color: '#fff' }} aria-label="Phone">
+            <PhoneIcon boxSize={6} />
           </Link>
-          <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }} fontSize="xl">
-            <FaGithub />
+          <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
+            <FaGithub style={{ fontSize: 24 }} />
           </Link>
-          <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }} fontSize="xl">
-            <FaLinkedin />
+          <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
+            <FaLinkedin style={{ fontSize: 24 }} />
           </Link>
         </Flex>
       </Flex>

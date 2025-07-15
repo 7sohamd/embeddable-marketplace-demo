@@ -118,7 +118,7 @@ const DiscoverPage: FC<DiscoverPageProps> = (props) => {
         )}
       </Box>
       {/* Hot Deals Section */}
-      <Center mb={6} mt={20}>
+      <Center mb={6} mt={20} id="hot-deals">
         <Text fontSize="2xl" fontWeight={200} color="white" fontFamily="Inter, sans-serif" display="flex" alignItems="center" gap={2}>
           <Flame color="orange" width={28} /> Hot Deals
         </Text>
@@ -161,7 +161,7 @@ const DiscoverPage: FC<DiscoverPageProps> = (props) => {
         )}
       </Box>
       {/* Featured Collectables Section */}
-      <Text fontSize="2xl" fontWeight={200} color="white" mt={20} mb={6} fontFamily="Inter, sans-serif" textAlign="center">
+      <Text fontSize="2xl" fontWeight={200} color="white" mt={20} mb={6} fontFamily="Inter, sans-serif" textAlign="center" id="featured">
         Featured Collectables
       </Text>
       <Box bg="#111" borderRadius="2xl" p={10} maxW="container.lg" mx="auto" boxShadow="2xl">
@@ -190,7 +190,8 @@ const DiscoverPage: FC<DiscoverPageProps> = (props) => {
         </Box>
       </Box>
       {/* Help/FAQ Section */}
-      <Text fontSize="2xl" fontWeight={200} color="white" mt={20} mb={6} fontFamily="Inter, sans-serif">
+      <Text fontSize="2xl" fontWeight={200} color="white" mt={20} mb={6} fontFamily="Inter, sans-serif" id="help">
+        Need Help?
       </Text>
       <Center flexDirection="column" mb={12}>
         <Box bg="#181818" borderRadius="full" p={4} mb={4}>
