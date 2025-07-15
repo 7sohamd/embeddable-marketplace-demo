@@ -43,10 +43,10 @@ const Footer: FC<FooterProps> = (props) => {
             <PhoneIcon boxSize={6} />
           </Link>
           <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
-            <Icon as={FaGithub} boxSize={6} />
+            <FaGithub size={24} />
           </Link>
           <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
-            <Icon as={FaLinkedin} boxSize={6} />
+            <FaLinkedin size={24} />
           </Link>
         </Flex>
       </Flex>
