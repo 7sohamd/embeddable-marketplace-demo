@@ -1,4 +1,4 @@
-import { Flex, Text, Link, Icon } from "@chakra-ui/react";
+import { Flex, Text, Link, Icon, Box } from "@chakra-ui/react";
 import React, { FC } from "react";
 import useApp from "@/lib/app/hooks/useApp";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -43,10 +43,14 @@ const Footer: FC<FooterProps> = (props) => {
               <PhoneIcon boxSize={6} />
             </Link>
             <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
-              {React.createElement(FaGithub, { size: 24 })}
+              <Box as="span" display="inline-flex" alignItems="center">
+                <FaGithub size={24} />
+              </Box>
             </Link>
             <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
-              {React.createElement(FaLinkedin, { size: 24 })}
+              <Box as="span" display="inline-flex" alignItems="center">
+                <FaLinkedin size={24} />
+              </Box>
             </Link>
           </Flex>
         </Flex>
