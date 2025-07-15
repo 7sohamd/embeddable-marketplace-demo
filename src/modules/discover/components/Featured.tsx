@@ -20,19 +20,21 @@ const FeaturedItem: FC<FeaturedItemProps> = (props) => {
     <SimpleGrid columns={2} spacing="4">
       <GridItem>
         <Box>
-          <Link href={LINKS.cw721Token(collection.id, collection.featured)}>
-            <FallbackImage
-              src={token?.metadata?.image}
-              alt="Image"
-              borderRadius="lg"
-              maxW="sm"
-              boxShadow="md"
-              cursor="pointer"
-              _hover={{
-                boxShadow: `0px 0px 0px 4px ${primary}`,
-              }}
-            />
-          </Link>
+          {LINKS.cw721Token(collection.id, collection.featured) && (
+            <Link href={LINKS.cw721Token(collection.id, collection.featured)}>
+              <FallbackImage
+                src={token?.metadata?.image}
+                alt="Image"
+                borderRadius="lg"
+                maxW="sm"
+                boxShadow="md"
+                cursor="pointer"
+                _hover={{
+                  boxShadow: `0px 0px 0px 4px ${primary}`,
+                }}
+              />
+            </Link>
+          )}
         </Box>
       </GridItem>
       <GridItem>

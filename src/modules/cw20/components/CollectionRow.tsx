@@ -53,11 +53,13 @@ const Cw20CollectionRow: FC<Cw20CollectionRowProps> = (props) => {
               <Text fontSize="xl" fontWeight="bold" flex={1} data-testid="collection-name">
                 {collection.name}
               </Text>
-              <Link href={LINKS.cw20Token(collectionId)} passHref>
-                <Button as="a" w="full" ml='auto' data-testid="buy-token-button">
-                  Buy Token
-                </Button>
-              </Link>
+              {LINKS.cw20Token(collectionId) && (
+                <Link href={LINKS.cw20Token(collectionId)} passHref legacyBehavior>
+                  <a style={{ display: 'block', width: '100%', marginLeft: 'auto', textAlign: 'center', padding: '0.5rem 1rem', background: '#3182ce', color: 'white', borderRadius: '0.375rem', fontWeight: 'bold', textDecoration: 'none' }} data-testid="buy-token-button">
+                    Buy Token
+                  </a>
+                </Link>
+              )}
             </HStack>
             <Box
               border="1px"

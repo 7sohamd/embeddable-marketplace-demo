@@ -4,7 +4,7 @@ import { Layout } from "@/modules/common/layout";
 import { DiscoverPage } from "@/modules/discover";
 import { KEPLR_AUTOCONNECT_KEY, connectAndromedaClient, initiateKeplr, useAndromedaStore } from "@/zustand/andromeda";
 import { updateConfig } from "@/zustand/app";
-import React, { FC, useEffect } from "react"
+import React, { FC, useEffect, useState } from "react"
 
 interface Props {
 }
@@ -16,18 +16,25 @@ const DefaultApp: FC<Props> = (props) => {
     const isLoading = useAndromedaStore(state => state.isLoading)
     const keplr = useAndromedaStore(state => state.keplr)
 
+    const [autoconnect, setAutoconnect] = useState<string | null>(null);
+
     useEffect(() => {
         initiateKeplr();
     }, []);
 
     useEffect(() => {
-        const autoconnect = localStorage.getItem(KEPLR_AUTOCONNECT_KEY);
+        if (typeof window !== "undefined") {
+            setAutoconnect(localStorage.getItem(KEPLR_AUTOCONNECT_KEY));
+        }
+    }, []);
+
+    useEffect(() => {
         if (!isLoading && typeof keplr !== "undefined" && autoconnect === keplr?.mode) {
             if (!isConnected || (isConnected && chainId !== APP_ENV.DEFAULT_CONFIG.chainId)) {
                 connectAndromedaClient(APP_ENV.DEFAULT_CONFIG.chainId);
             }
         }
-    }, [keplr, isConnected, isLoading, chainId]);
+    }, [keplr, isConnected, isLoading, chainId, autoconnect]);
 
     useEffect(() => {
         updateConfig(APP_ENV.DEFAULT_CONFIG);

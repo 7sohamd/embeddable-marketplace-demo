@@ -75,7 +75,11 @@ const ModalError: FC<PropsWithChildren> = memo(function ModalError({ children })
         </Box>
         <Text fontSize={'16px'}>
           We apologize for any unclear errors you may encounter. At present there are problems with the foundational chain-level systems that Andromeda runs on top of to appropriately return errors.
-          This is expected to be resolved in an upcoming release of CosmWasm 2.0. You can view <u><a href="https://www.youtube.com/watch?v=VNwoLZZSoYs&t=8119s" target="_blank" rel="noopener noreferrer"> here</a></u> for more details.
+          This is expected to be resolved in an upcoming release of CosmWasm 2.0. You can view <u>{
+            "https://www.youtube.com/watch?v=VNwoLZZSoYs&t=8119s" && (
+              <a href="https://www.youtube.com/watch?v=VNwoLZZSoYs&t=8119s" target="_blank" rel="noopener noreferrer"> here</a>
+            )
+          }</u> for more details.
         </Text>
       </Flex>
       <Flex w="full" justifyContent={'end'}>

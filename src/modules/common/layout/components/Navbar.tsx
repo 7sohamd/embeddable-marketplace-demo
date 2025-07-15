@@ -19,11 +19,11 @@ const Navbar: FC<NavbarProps> = (props) => {
         mx="auto"
         gap="4"
       >
-        <Link href={LINKS.home()} passHref>
-          <Text as="a" fontSize="lg" fontWeight="bold">
-            {config.name}
-          </Text>
-        </Link>
+        {LINKS.home() && (
+          <Link href={LINKS.home()} passHref legacyBehavior>
+            <a style={{ fontSize: '1.125rem', fontWeight: 'bold' }}>{config.name}</a>
+          </Link>
+        )}
         <Flex direction="row" ml="auto" gap="2">
           <CollectionDropdown />
           <ConnectWallet />

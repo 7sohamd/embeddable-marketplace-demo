@@ -23,11 +23,13 @@ const ExchangeIntro: FC<ExchangeIntroProps> = (props) => {
         <Text fontWeight="light" fontSize="md" mt="2" mb="2" data-testid="intro-description">
           {tokenInfo?.marketingInfo?.description}
         </Text>
-        <Link href={tokenInfo?.marketingInfo?.project} target="_blank" data-testid="learn-more-link">
-          <Button width={"fit-content"} backgroundColor={"gray.900"} paddingX={12} data-testid="learn-more-button">
-            Learn more
-          </Button>
-        </Link>
+        {tokenInfo?.marketingInfo?.project && (
+          <Link href={tokenInfo.marketingInfo.project} target="_blank" data-testid="learn-more-link">
+            <Button width={"fit-content"} backgroundColor={"gray.900"} paddingX={12} data-testid="learn-more-button">
+              Learn more
+            </Button>
+          </Link>
+        )}
       </Flex>
     </Flex>
   );

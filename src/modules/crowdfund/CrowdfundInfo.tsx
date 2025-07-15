@@ -38,6 +38,11 @@ const CrowdfundInfo: FC<CrowdfundInfoProps> = (props) => {
   const expires = getTime(crowdfundState?.state.end_time ?? {});
   const isEnded = expires.isBefore(new Date());
   const [duration, setDuration] = useState(dayjs.duration(0));
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setNow(new Date());
+  }, []);
 
   useEffect(() => {
     if (!crowdfundState || !crowdfundState.state) return;

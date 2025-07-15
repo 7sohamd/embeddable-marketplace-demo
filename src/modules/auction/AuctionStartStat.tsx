@@ -3,7 +3,7 @@ import { useGetTokenAuctionState } from "@/lib/graphql/hooks/auction";
 import { formatTime, getTime } from "@/utils/time";
 import { Badge, Flex, Text } from "@chakra-ui/react";
 import { Flame } from "lucide-react";
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 
 interface Props {
     collection: IAuctionCollection;
@@ -19,10 +19,15 @@ const AuctionStartStat: FC<Props> = (props) => {
         tokenId
     );
 
+    const [now, setNow] = useState<Date | null>(null);
+    useEffect(() => {
+      setNow(new Date());
+    }, []);
+
     const startTime = getTime(auctionState?.start_time ?? {});
     const endTime = getTime(auctionState?.end_time ?? {});
-    const isStarted = startTime.isBefore(new Date());
-    const isEnded = endTime.isBefore(new Date());
+    const isStarted = startTime.isBefore(now ?? new Date());
+    const isEnded = endTime.isBefore(now ?? new Date());
 
     return (
         <Flex gap="1" align="center" data-testid="auction-start-stat">

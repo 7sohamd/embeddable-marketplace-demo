@@ -10,10 +10,11 @@ const CopyButton: FC<CopyButtonProps> = (props) => {
   const { text, children, copiedProps = {}, ...buttonProps } = props;
   const [notification, setNotification] = useState(false);
 
-  const handleCopy = useCallback(() => {
-    setNotification(true);
-    navigator.clipboard.writeText(text);
-  }, [text, setNotification]);
+  const handleCopy = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    }
+  };
 
   useEffect(() => {
     if (notification) {

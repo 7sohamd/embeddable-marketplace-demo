@@ -57,12 +57,14 @@ const SupportedBrowserLinks: FC = (props) => {
     return (
         <HStack>
             {SUPPORTED_BROSWERS.map(browser => (
-                <AspectRatio key={browser} w='4' ratio={1} as='a' href={BROWSER_LINKS[browser]}
-                    target="_blank">
-                    <Image
-                        src={BROWSER_ICONS[browser]}
-                    />
-                </AspectRatio>
+                BROWSER_LINKS[browser] ? (
+                    <AspectRatio key={browser} w='4' ratio={1} as='a' href={BROWSER_LINKS[browser]}
+                        target="_blank">
+                        <Image
+                            src={BROWSER_ICONS[browser]}
+                        />
+                    </AspectRatio>
+                ) : null
             ))}
         </HStack>
     )

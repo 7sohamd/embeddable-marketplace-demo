@@ -94,21 +94,15 @@ const Connected: FC<ConnectedProps> = (props) => {
                 >
                   Copy address
                 </CopyButton>
-                <Button
-                  as="a"
-                  href={config?.blockExplorerAddressPages[0]?.replaceAll(
-                    "${address}",
-                    account?.address ?? ""
-                  )}
-                  target="_blank"
-                  leftIcon={<ExternalLinkIcon boxSize={4} />}
-                  variant="outline"
-                  fontWeight={500}
-                  color="gray.700"
-                  w="full"
-                >
-                  Explorer
-                </Button>
+                {config?.blockExplorerAddressPages[0] && account?.address && (
+                  <a
+                    href={config.blockExplorerAddressPages[0].replaceAll("${address}", account.address)}
+                    target="_blank"
+                    style={{ display: 'block', width: '100%', textAlign: 'center', padding: '0.5rem 1rem', background: '#3182ce', color: 'white', borderRadius: '0.375rem', fontWeight: 'bold', textDecoration: 'none' }}
+                  >
+                    Explorer
+                  </a>
+                )}
               </HStack>
               {/* <Box
                 border="1px solid"

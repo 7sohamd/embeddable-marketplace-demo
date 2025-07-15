@@ -18,7 +18,11 @@ const Footer: FC<FooterProps> = (props) => {
       data-testid="footer"
     >
       <Text data-testid="footer-text">
-        More Information about <b>ANDROMEDA</b> can be found <Link href='https://www.andromedaprotocol.io/' target="_blank" data-testid="footer-link">here</Link>
+        More Information about <b>ANDROMEDA</b> can be found {config.websiteUrl && (
+  <Link href={config.websiteUrl} target="_blank" data-testid="footer-link">
+    here
+  </Link>
+)}
       </Text>
     </Flex>
   );

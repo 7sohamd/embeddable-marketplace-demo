@@ -16,12 +16,19 @@ const Providers: FC<Props> = (props) => {
     const chainId = searchParams.get('chain');
     const rawConfig = searchParams.get('config') as string;
     const [loaded, setLoaded] = useState(false);
+    const [autoconnect, setAutoconnect] = useState<string | null>(null);
 
     useLayoutEffect(() => {
         const config: IConfig = parseEmbeddableUrl(rawConfig);
         updateConfig(config);
         setLoaded(true)
     }, [rawConfig])
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setAutoconnect(localStorage.getItem(KEPLR_AUTOCONNECT_KEY));
+        }
+    }, []);
 
     const isConnected = useAndromedaStore(state => state.isConnected)
     const isLoading = useAndromedaStore(state => state.isLoading)
@@ -33,13 +40,12 @@ const Providers: FC<Props> = (props) => {
     }, []);
 
     useLayoutEffect(() => {
-        const autoconnect = localStorage.getItem(KEPLR_AUTOCONNECT_KEY);
         if (!isLoading && typeof keplr !== "undefined" && autoconnect === keplr?.mode) {
             if (!isConnected || (isConnected && (connectedChainId !== chainId))) {
                 connectAndromedaClient(chainId);
             }
         }
-    }, [keplr, isConnected, isLoading, chainId]);
+    }, [keplr, isConnected, isLoading, chainId, autoconnect]);
 
     if (!loaded) return null;
 

@@ -40,6 +40,11 @@ const AuctionInfo: FC<AuctionInfoProps> = (props) => {
   const isEnded = endTime.isBefore(new Date());
 
   const [duration, setDuration] = useState(dayjs.duration(0));
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setNow(new Date());
+  }, []);
 
   useEffect(() => {
     if (!auctionState) return;
@@ -49,15 +54,16 @@ const AuctionInfo: FC<AuctionInfoProps> = (props) => {
         clearInterval(tId);
         return;
       }
-      const today = new Date();
-      if (isStarted) {
-        setDuration(dayjs.duration(endTime.diff(today)));
-      } else {
-        setDuration(dayjs.duration(startTime.diff(today)));
+      if (now) {
+        if (isStarted) {
+          setDuration(dayjs.duration(endTime.diff(now)));
+        } else {
+          setDuration(dayjs.duration(startTime.diff(now)));
+        }
       }
     }, 1000);
     return () => clearInterval(tId);
-  }, [auctionState, isStarted, isEnded]);
+  }, [auctionState, isStarted, isEnded, now, startTime, endTime]);
 
   return (
     <Box w="full" data-testid="auction-info">

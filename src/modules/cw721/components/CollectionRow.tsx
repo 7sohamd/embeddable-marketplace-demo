@@ -47,11 +47,13 @@ const Cw721CollectionRow: FC<Cw721CollectionRowProps> = (props) => {
                 &nbsp;
               </Text>
             </Flex>
-            <Link href={LINKS.collection(collectionId)} passHref>
-              <Button as="a" w="full" mb="10" data-testid="explore-collection-button">
-                Explore Collection
-              </Button>
-            </Link>
+            {LINKS.collection(collectionId) && (
+              <Link href={LINKS.collection(collectionId)} passHref legacyBehavior>
+                <a style={{ display: 'block', width: '100%', marginBottom: '2.5rem', textAlign: 'center', padding: '0.5rem 1rem', background: '#3182ce', color: 'white', borderRadius: '0.375rem', fontWeight: 'bold', textDecoration: 'none' }} data-testid="explore-collection-button">
+                  Explore Collection
+                </a>
+              </Link>
+            )}
           </Flex>
         </GridItem>
         {allTokens?.slice(0, 3).map((tokenId) => (

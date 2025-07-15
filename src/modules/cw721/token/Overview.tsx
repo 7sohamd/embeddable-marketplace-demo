@@ -54,12 +54,16 @@ const Overview: FC<OverviewProps> = (props) => {
         </Text>
         <Box mt="4" p="10" rounded="2xl" border="1px" borderColor="gray.300" data-testid="details-box">
           <Box display="flex" justifyContent="space-between" alignItems="center" pl={2} data-testid="collection-link">
-            <Link href={LINKS.collection(collection.id)}>{cw721?.contractInfo?.name}</Link>
+            {LINKS.collection(collection.id) && (
+              <Link href={LINKS.collection(collection.id)}>{cw721?.contractInfo?.name}</Link>
+            )}
             <Flex justifyContent="flex-end">
               <Box display="inline-block" border="1px" borderColor="gray.300" borderRadius="md" px="9px" py="8px" ml="5px">
-                <Link href={collection.twitter} target={"_blank"}>
-                  <TwitterIcon w={5} h={5} />
-                </Link>
+                {collection.twitter && (
+                  <Link href={collection.twitter} target={"_blank"}>
+                    <TwitterIcon w={5} h={5} />
+                  </Link>
+                )}
               </Box>
               <Box display="inline-block" border="1px" borderColor="gray.300" borderRadius="md" px="9px" py="8px" ml="5px">
                 <Share />
@@ -68,12 +72,14 @@ const Overview: FC<OverviewProps> = (props) => {
           </Box>
           <Divider orientation='horizontal' mt="7" />
           <Box display="flex" flexDirection="column">
-            <Link href={chainConfig?.chainUrl} target="_blank">
-              <Box px="9px" mt="10px" display="inline-flex" alignItems="center" data-testid="chain-info">
-                <Image src={chainConfig?.iconUrls?.sm} alt={chainConfig?.chainName + " icon"} mr="10px" width="22px" />
-                <Text>{chainConfig?.chainName}</Text>{chainConfig?.chainType === "testnet" ? <Text ml="5px" fontSize={"small"}>(testnet)</Text> : null}
-              </Box>
-            </Link>
+            {chainConfig?.chainUrl && (
+              <Link href={chainConfig?.chainUrl} target="_blank">
+                <Box px="9px" mt="10px" display="inline-flex" alignItems="center" data-testid="chain-info">
+                  <Image src={chainConfig?.iconUrls?.sm} alt={chainConfig?.chainName + " icon"} mr="10px" width="22px" />
+                  <Text>{chainConfig?.chainName}</Text>{chainConfig?.chainType === "testnet" ? <Text ml="5px" fontSize={"small"}>(testnet)</Text> : null}
+                </Box>
+              </Link>
+            )}
             <Box border="1px" borderColor="gray.300" borderRadius="lg" px="4" py='6' my='6' data-testid="token-details">
               <Flex justifyContent="space-between">
                 <Text fontWeight="bold" fontSize="sm">
@@ -106,16 +112,20 @@ const Overview: FC<OverviewProps> = (props) => {
                 <Text fontWeight="bold" fontSize="sm">
                   Token URI
                 </Text>
-                <Link isExternal href={token?.token_uri} fontWeight="light" fontSize="sm">
-                  {truncate(token?.token_uri, [30, 12])}
-                </Link>
+                {token?.token_uri && (
+                  <Link isExternal href={token?.token_uri} fontWeight="light" fontSize="sm">
+                    {truncate(token?.token_uri, [30, 12])}
+                  </Link>
+                )}
               </Flex>
             </Box>
             <ButtonGroup mt='2' size='sm' w='full' data-testid="view-buttons">
-              <Button as={Link} isExternal href={explorerUrl} flex={1} variant="outline">
-                <ExternalLinkIcon mr="10px" />
-                <Text>View on Explorer</Text>
-              </Button>
+              {explorerUrl && (
+                <Button as={Link} isExternal href={explorerUrl} flex={1} variant="outline">
+                  <ExternalLinkIcon mr="10px" />
+                  <Text>View on Explorer</Text>
+                </Button>
+              )}
               {token?.metadata && (
                 <Button onClick={onOpen} flex={1} variant="outline" data-testid="view-metadata-button">
                   <FolderOpenIcon mr="10px" />

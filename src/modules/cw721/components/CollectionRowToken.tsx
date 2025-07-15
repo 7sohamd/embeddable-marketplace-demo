@@ -18,11 +18,13 @@ const CollectionRowToken: FC<CollectionRowTokenProps> = (props) => {
 
   return (
     <Box p={2}>
-      <Link href={LINKS.cw721Token(collection.id, tokenId)}>
-        <FallbackImage src={token?.metadata?.image} alt="Image" borderRadius="lg" cursor='pointer' _hover={{
-          scale: "110%"
-        }} transform='auto' transition='ease-in' transitionProperty='all' transitionDuration='150ms' />
-      </Link>
+      {LINKS.cw721Token(collection.id, tokenId) && (
+        <Link href={LINKS.cw721Token(collection.id, tokenId)}>
+          <FallbackImage src={token?.metadata?.image} alt="Image" borderRadius="lg" cursor='pointer' _hover={{
+            scale: "110%"
+          }} transform='auto' transition='ease-in' transitionProperty='all' transitionDuration='150ms' />
+        </Link>
+      )}
     </Box>
     // <Link href={LINKS.cw721Token(collection.id, tokenId)}>
     //   <Flex
