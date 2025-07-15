@@ -191,7 +191,7 @@ const DiscoverPage: FC<DiscoverPageProps> = (props) => {
       </Box>
       {/* Help/FAQ Section */}
       <Text fontSize="2xl" fontWeight={200} color="white" mt={20} mb={6} fontFamily="Inter, sans-serif" id="help">
-        Need Help?
+
       </Text>
       <Center flexDirection="column" mb={12}>
         <Box bg="#181818" borderRadius="full" p={4} mb={4}>

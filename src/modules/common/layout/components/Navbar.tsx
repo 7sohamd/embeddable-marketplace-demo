@@ -35,7 +35,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         {LINKS.home() && (
           <Link href="/" passHref legacyBehavior>
             <a style={{ fontFamily: 'Inter, sans-serif', fontWeight: 200, fontSize: '1.125rem' }}>SneakSale</a>
-          </Link>
+        </Link>
         )}
         {/* New nav buttons */}
         <Flex direction="row" alignItems="center" gap="2" ml={8}>
