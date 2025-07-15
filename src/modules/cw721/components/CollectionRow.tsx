@@ -26,42 +26,45 @@ const Cw721CollectionRow: FC<Cw721CollectionRowProps> = (props) => {
   const { data: allTokens } = useGetCw721Tokens(collection.cw721);
 
   return (
-    <Box p="12" rounded="2xl" bg="gray.100" data-testid="cw721-collection-row">
-      <SimpleGrid columns={4} spacing="4">
-        <GridItem data-testid="collection-info">
-          <Flex direction="column" gap="4" alignItems="start">
-            <Text fontSize="xl" fontWeight="bold" data-testid="collection-name">
-              {collection.name}
-            </Text>
-            <Box>
-              <Text fontSize="xs" textStyle="light">
-                &nbsp;
-              </Text>
-              <Text fontWeight="bold" fontSize="sm">
-                &nbsp;
-              </Text>
-            </Box>
-            <Flex gap="1" align="center">
-              <Text>&nbsp;</Text>
-              <Text fontSize="xs" fontWeight="bold">
-                &nbsp;
-              </Text>
-            </Flex>
-            {LINKS.collection(collectionId) && (
-              <Link href={LINKS.collection(collectionId)} passHref legacyBehavior>
-                <a style={{ display: 'block', width: '100%', marginBottom: '2.5rem', textAlign: 'center', padding: '0.5rem 1rem', background: '#3182ce', color: 'white', borderRadius: '0.375rem', fontWeight: 'bold', textDecoration: 'none' }} data-testid="explore-collection-button">
-                  Explore Collection
-                </a>
-              </Link>
-            )}
-          </Flex>
-        </GridItem>
+    <Box
+      width="300px"
+      height="400px"
+      m="auto"
+      p="8"
+      rounded="2xl"
+      bg="#181818"
+      boxShadow="lg"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="flex-start"
+      data-testid="cw721-collection-row"
+      position="relative"
+    >
+      <Flex gap={2} mb={4} justify="center" align="center" width="100%">
         {allTokens?.slice(0, 3).map((tokenId) => (
-          <GridItem key={tokenId} alignSelf='center' data-testid={`token-card-${tokenId}`}>
+          <Box key={tokenId} maxW="200px" maxH="200px" display="flex" alignItems="center" justifyContent="center">
             <CollectionRowToken tokenId={tokenId} collection={collection} contractAddress={collection.cw721} />
-          </GridItem>
+          </Box>
         ))}
-      </SimpleGrid>
+      </Flex>
+      <Flex direction="column" align="center" justify="center" flexGrow={1} width="100%">
+        <Text fontSize="xl" fontWeight={200} color="white" mb={2} fontFamily="Inter, sans-serif" textAlign="center">
+          {collection.name}
+        </Text>
+        {collection.description && (
+          <Text fontSize="sm" fontWeight={200} color="#bbb" mb={4} fontFamily="Inter, sans-serif" textAlign="center">
+            {collection.description}
+          </Text>
+        )}
+      </Flex>
+      {LINKS.collection(collectionId) && (
+        <Link href={LINKS.collection(collectionId)} passHref legacyBehavior>
+          <a style={{ display: 'block', maxWidth: '90%', margin: '0 auto', textAlign: 'center', padding: '0.75rem 1rem', background: '#222', color: 'white', borderRadius: '0.75rem', fontWeight: 200, textDecoration: 'none', marginTop: 'auto' }} data-testid="explore-collection-button">
+            Explore Collection
+          </a>
+        </Link>
+      )}
     </Box>
   );
 };

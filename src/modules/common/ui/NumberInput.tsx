@@ -19,9 +19,9 @@ const NumberInput: FC<NumberInputProps> = (props) => {
 
   return (
     <Flex direction="row" gap="2">
-      <Button {...inc}>+</Button>
-      <Input {...input} />
-      <Button {...dec}>-</Button>
+      <Button {...inc} bg="#181818" color="white" _hover={{ bg: "#222" }}>+</Button>
+      <Input {...input} bg="#181818" color="white" borderColor="#333" _placeholder={{ color: '#888' }} />
+      <Button {...dec} bg="#181818" color="white" _hover={{ bg: "#222" }}>-</Button>
     </Flex>
   );
 };

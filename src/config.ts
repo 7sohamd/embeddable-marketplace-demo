@@ -12,12 +12,12 @@ const CONFIG: IConfig = {
             auction:
                 "andr1yfyxy972x5kehha8lw7mwjfgwt64e7gqhr0x0ztx8h9e08ggzmkqg6r39f",
             cw721: "andr1lgjucum2j99z39x2ys33zv95zvj2hqmfdvmldmy7yq2nc0ull06svzgdls",
-            name: "Auction Example",
+            name: "ADIDAS SL 72",
+            description: "Mens Originals",
             type: ICollectionType.AUCTION,
             id: "auction",
             featured: "ANDR1"
         },
-
     ],
 };
 

@@ -11,12 +11,10 @@ const Layout: FC<LayoutProps> = (props) => {
   const { children } = props;
 
   return (
-    <Box minH="100vh">
-      <Box>
-        <Navbar />
-      </Box>
-      <Divider />
-      <Box px="24" py="16">
+    <Box minH="100vh" bg="#000">
+      <Navbar />
+      <Divider borderColor="#222" />
+      <Box px="24" py="16" pt="32">
         {children}
       </Box>
       <PoweredByLogo />

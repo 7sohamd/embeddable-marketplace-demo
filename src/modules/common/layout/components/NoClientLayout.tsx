@@ -10,7 +10,7 @@ const NoClientLayout: FC<LayoutProps> = (props) => {
   const { children } = props;
 
   return (
-    <Box minH="100vh">
+    <Box minH="100vh" bg="#101216">
       <Box py="2" px="8">
         <Flex
           direction="row"
@@ -19,12 +19,10 @@ const NoClientLayout: FC<LayoutProps> = (props) => {
           mx="auto"
           gap="4"
         >
-          <Text as="a" fontSize="lg" fontWeight="bold">
-            Andromeda Embeddables
-          </Text>
+          <a style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#F5F6FA' }}>Andromeda Embeddables</a>
         </Flex>
       </Box>
-      <Divider />
+      <Divider borderColor="#23272F" />
       <Box px="24" py="16">
         {children}
       </Box>

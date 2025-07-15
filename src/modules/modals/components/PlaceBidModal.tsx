@@ -79,7 +79,7 @@ const PlaceBidModal: FC<PlaceBidModalProps> = (props) => {
           <FormHelperText>
             Highest bid: {auctionState?.high_bidder_amount ?? "None"} {DENOM}
           </FormHelperText>
-          <Button onClick={onSubmit} w="full" mt="6" variant="solid">
+          <Button onClick={onSubmit} w="full" mt="6" variant="solid" bg="#000" color="white" _hover={{ bg: "#181818" }}>
             Place a bid
           </Button>
         </FormControl>

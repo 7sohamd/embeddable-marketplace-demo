@@ -41,6 +41,7 @@ const AuctionInfo: FC<AuctionInfoProps> = (props) => {
 
   const [duration, setDuration] = useState(dayjs.duration(0));
   const [now, setNow] = useState<Date | null>(null);
+  const [shared, setShared] = useState(false);
 
   useEffect(() => {
     setNow(new Date());
@@ -65,6 +66,26 @@ const AuctionInfo: FC<AuctionInfoProps> = (props) => {
     return () => clearInterval(tId);
   }, [auctionState, isStarted, isEnded, now, startTime, endTime]);
 
+  const handleShare = async () => {
+    let url = '';
+    if (typeof window !== 'undefined') {
+      url = window.location.origin + '/galileo-4/andromeda/auction/cw721/SKT';
+    }
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: name, url });
+        setShared(true);
+        setTimeout(() => setShared(false), 1500);
+        return;
+      } catch (e) {}
+    }
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(url);
+      setShared(true);
+      setTimeout(() => setShared(false), 1500);
+    }
+  };
+
   return (
     <Box w="full" data-testid="auction-info">
       <HStack justify="space-between" data-testid="auction-header">
@@ -76,8 +97,8 @@ const AuctionInfo: FC<AuctionInfoProps> = (props) => {
             Collection: <b data-testid="auction-collection">{props.collectionName}</b>
           </Text>
         </Box>
-        <Button leftIcon={<Share width={16} />} variant="outline" data-testid="auction-share-button">
-          Share
+        <Button leftIcon={<Share width={16} />} variant="outline" data-testid="auction-share-button" onClick={handleShare}>
+          {shared ? "Link Copied!" : "Share"}
         </Button>
       </HStack>
       <Box
