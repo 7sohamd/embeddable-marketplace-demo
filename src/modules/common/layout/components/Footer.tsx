@@ -44,12 +44,12 @@ const Footer: FC<FooterProps> = (props) => {
             </Link>
             <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
               <Box as="span" display="inline-flex" alignItems="center">
-                <FaGithub size={24} />
+                {(FaGithub as any)({ size: 24 })}
               </Box>
             </Link>
             <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
               <Box as="span" display="inline-flex" alignItems="center">
-                <FaLinkedin size={24} />
+                {(FaLinkedin as any)({ size: 24 })}
               </Box>
             </Link>
           </Flex>
