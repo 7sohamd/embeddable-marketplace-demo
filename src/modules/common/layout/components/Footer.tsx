@@ -4,10 +4,10 @@ import useApp from "@/lib/app/hooks/useApp";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
 
-interface FooterProps { }
+interface FooterProps {}
 
 const Footer: FC<FooterProps> = (props) => {
-  const { } = props;
+  const {} = props;
   const { config } = useApp();
 
   return (
@@ -16,8 +16,8 @@ const Footer: FC<FooterProps> = (props) => {
         backgroundColor="#000"
         direction="column"
         textColor="white"
-        align='center'
-        p='8'
+        align="center"
+        p="8"
         borderTop="1px solid #222"
         fontFamily="Inter, sans-serif"
         fontWeight={200}
@@ -33,21 +33,22 @@ const Footer: FC<FooterProps> = (props) => {
         <Text mt={2} fontSize="sm" color="#888" fontWeight={200}>
           &copy; {new Date().getFullYear()} Powered by Andromeda. All rights reserved.
         </Text>
-      </Flex>
-      <Flex direction="column" align="center" mt={6} gap={1}>
-        <Flex gap={4} mt={2}>
-          <Link href="mailto:soham4707@gmail.com" color="#bbb" _hover={{ color: '#fff' }} aria-label="Email">
-            <EmailIcon boxSize={6} />
-          </Link>
-          <Link href="tel:+917363977016" color="#bbb" _hover={{ color: '#fff' }} aria-label="Phone">
-            <PhoneIcon boxSize={6} />
-          </Link>
-          <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
-            <FaGithub size={24} />
-          </Link>
-          <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
-            <FaLinkedin size={24} />
-          </Link>
+        
+        <Flex direction="column" align="center" mt={6} gap={1}>
+          <Flex gap={4} mt={2}>
+            <Link href="mailto:soham4707@gmail.com" color="#bbb" _hover={{ color: '#fff' }} aria-label="Email">
+              <EmailIcon boxSize={6} />
+            </Link>
+            <Link href="tel:+917363977016" color="#bbb" _hover={{ color: '#fff' }} aria-label="Phone">
+              <PhoneIcon boxSize={6} />
+            </Link>
+            <Link href="https://github.com/7sohamd" target="_blank" aria-label="GitHub" color="#bbb" _hover={{ color: '#fff' }}>
+              <Icon as={FaGithub} boxSize={6} />
+            </Link>
+            <Link href="https://www.linkedin.com/in/soham-dey-891332256/" target="_blank" aria-label="LinkedIn" color="#bbb" _hover={{ color: '#fff' }}>
+              <Icon as={FaLinkedin} boxSize={6} />
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
     </footer>
